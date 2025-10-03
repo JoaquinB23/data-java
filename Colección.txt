@@ -1,0 +1,86 @@
+Colección 
+
+🔹 ¿Qué es una colección?
+
+En Java, una colección es un objeto que agrupa múltiples elementos en una sola unidad.
+Sirve para almacenar, manipular y acceder a datos de forma más flexible que los arrays, porque:
+
+Se pueden redimensionar dinámicamente.
+
+Tienen métodos incorporados para agregar, eliminar, buscar, ordenar, etc.
+
+Todas las colecciones pertenecen al Framework de Colecciones de Java (Java Collections Framework – JCF).
+
+🔹 Interfaces principales del Framework
+
+Las colecciones se basan en interfaces, cada una con características diferentes:
+
+Collection<E> → interfaz raíz de la mayoría de colecciones.
+
+List<E> → lista ordenada, permite elementos duplicados.
+
+Implementaciones: ArrayList, LinkedList, Vector.
+
+Set<E> → conjunto, no permite duplicados.
+
+Implementaciones: HashSet, LinkedHashSet, TreeSet.
+
+Queue<E> → estructura FIFO (primero en entrar, primero en salir).
+
+Implementaciones: PriorityQueue, ArrayDeque.
+
+Map<K,V> (no hereda de Collection) → almacena pares clave-valor.
+
+Implementaciones: HashMap, LinkedHashMap, TreeMap, Hashtable.
+
+🔹 Ejemplos básicos
+1. Lista (List)
+import java.util.*;
+
+public class EjemploList {
+    public static void main(String[] args) {
+        List<String> lista = new ArrayList<>();
+        lista.add("Juan");
+        lista.add("Ana");
+        lista.add("Pedro");
+
+        System.out.println(lista); // [Juan, Ana, Pedro]
+        System.out.println(lista.get(1)); // Ana
+    }
+}
+
+2. Conjunto (Set)
+import java.util.*;
+
+public class EjemploSet {
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<>();
+        set.add("Rojo");
+        set.add("Azul");
+        set.add("Rojo"); // duplicado, no se agrega
+
+        System.out.println(set); // [Rojo, Azul]
+    }
+}
+
+3. Mapa (Map)
+import java.util.*;
+
+public class EjemploMap {
+    public static void main(String[] args) {
+        Map<Integer, String> mapa = new HashMap<>();
+        mapa.put(1, "Argentina");
+        mapa.put(2, "Brasil");
+        mapa.put(3, "Chile");
+
+        System.out.println(mapa.get(2)); // Brasil
+        System.out.println(mapa); // {1=Argentina, 2=Brasil, 3=Chile}
+    }
+}
+
+🔹 Ventajas de usar colecciones
+
+✅ Crecen dinámicamente (a diferencia de los arrays).
+✅ Métodos ya implementados para manejo de datos.
+✅ Estructuras especializadas (listas, colas, pilas, mapas).
+✅ Más legibles y fáciles de mantener.
