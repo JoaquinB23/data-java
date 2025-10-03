@@ -1,0 +1,49 @@
+## **Pregunta 1: Sobrescribir `toString` en Estudiantes**
+
+Código:
+
+```java
+@Override
+public String toString() {
+    return super.toString() + " - Carrera: " + this.carrera;
+}
+```
+
+📌 Análisis:
+
+* `super.toString()` llama al método `toString` de la clase padre (`Persona`).
+* Se añade más información (`" - Carrera: ..."`).
+* Esto **no oculta** ni **sobrecarga**: lo que hace es **sobrescribir** el método `toString` heredado de `Object` (ya modificado en `Persona`) y extender su funcionalidad.
+
+✅ **Respuesta correcta:**
+👉 **Se reemplaza el comportamiento de toString de Persona, pero usando también el de Persona a través de super.toString().**
+
+---
+
+## **Pregunta 2: Atributo `private`**
+
+Código:
+
+```java
+private String color;
+```
+
+📌 Análisis:
+
+* `private` significa que **solo es accesible dentro de la misma clase**.
+* No se puede acceder directamente desde fuera, ni siquiera desde subclases.
+* Generalmente se accede mediante **getters/setters**.
+
+✅ **Respuesta correcta:**
+👉 **Que solo se puede acceder a color dentro de la clase Auto.**
+
+---
+
+### 🚀 Resumen de respuestas:
+
+1. **Se reemplaza el comportamiento de toString de Persona, pero usando también el de Persona a través de super.toString().**
+2. **Que solo se puede acceder a color dentro de la clase Auto.**
+
+---
+
+

@@ -1,0 +1,56 @@
+📌 Recordemos las reglas de un **JavaBean**:
+
+1. **Debe tener un constructor público sin parámetros** ✅ (esta clase lo tiene).
+2. **Sus atributos deben ser privados** ✅ (version y limiteUsuarios lo son).
+3. **Acceso mediante getters y setters públicos** ❌ (solo `limiteUsuarios` cumple, `version` no).
+4. **Debe implementar Serializable** si se pretende que sea un JavaBean estándar. ❌ (aquí no se implementa).
+5. Un JavaBean **puede tener atributos de solo lectura**, pero en ese caso debe proveer un **getter**.
+
+---
+
+### 📌 Problemas en esta clase:
+
+* `version` está declarado como:
+
+  ```java
+  private final String version = "1.0";
+  ```
+
+  * Es **final** → no se puede modificar.
+  * No hay **getter** (`getVersion()`), solo queda "escondido".
+  * Un JavaBean puede tener propiedades de solo lectura, **pero necesita un getter para exponerlo**.
+  * No es obligatorio tener un `setVersion()`, porque puede ser inmutable, pero **sí falta el `getVersion()`**.
+
+* No implementa `Serializable`.
+
+  * No es estrictamente obligatorio para todas las clases, pero en la convención estándar de **JavaBeans sí lo es** (porque suelen usarse en frameworks, almacenamiento, etc.).
+
+---
+
+### 📌 Opciones del enunciado:
+
+1. **Falla porque el atributo `version` es final y no tiene `setVersion()`.**
+   ❌ Incorrecto → no hace falta eliminar `final` ni agregar un setter: un JavaBean puede tener propiedades de solo lectura.
+
+2. **Falla porque no implementa Serializable, y además habría que marcar `version` como transient.**
+   ❌ Incorrecto → no hace falta marcar `version` como `transient`. Es un valor constante y no hay problema en serializarlo.
+
+3. **Falla porque no implementa Serializable. La única corrección necesaria es implementar Serializable a la declaración de clase y no tocar el atributo `version`.**
+   ✅ Correcto → basta con implementar `Serializable`.
+   Y además sería deseable (aunque no estrictamente obligatorio en todas las definiciones) agregar `getVersion()`.
+
+4. **Falla porque no implementa Serializable. Además, debe agregarse un método `getVersion()` para exponer el atributo `version`.**
+   ✅ También correcto → es la respuesta más completa, porque soluciona los dos problemas:
+
+   * implementar `Serializable`,
+   * y añadir un getter para `version`.
+
+---
+
+### 🚀 Conclusión:
+
+La **forma correcta y completa** es:
+👉 **La clase falla como JavaBean porque no implementa la interfaz Serializable. Además, debe agregarse un método public String getVersion() para el atributo version.**
+
+---
+

@@ -1,0 +1,76 @@
+1. Llamada A: Produce la salida "Transporte en movimiento.", porque el compilador decide en tiempo de compilación basándose en el tipo de referencia. 
+2. Llamada A: Produce la salida "Auto detenido.", demostrando el polimorfismo en tiempo de ejecución. La Llamada B fallaría en compilación. 
+3. Llamada A: Produce la salida "Auto detenido.", demostrando el polimorfismo. 
+4. La Llamada B compilaría y se ejecutaría correctamente, produciendo la salida "Auto viajando a 100 km/h.". El código no compila debido a un error de Sobreescritura en el Método 1 (la línea public void viajar(int velocidad)), ya que su firma no coincide con ningún método en la superclase.
+
+
+
+
+
+### Código base
+
+```java
+class Transporte {
+    public void viajar() {
+        System.out.println("Transporte en movimiento.");
+    }
+}
+
+class Auto extends Transporte {
+    // Método 1 → NO es sobrescritura, es sobrecarga
+    public void viajar(int velocidad) {
+        System.out.println("Auto viajando a " + velocidad + " km/h.");
+    }
+
+    // Método 2 → ESTE SÍ es sobrescritura (misma firma que en Transporte)
+    public void viajar() {
+        System.out.println("Auto detenido.");
+    }
+}
+```
+
+---
+
+### En el `main`
+
+```java
+public static void main(String[] args) {
+    Transporte vehiculo = new Auto();
+
+    vehiculo.viajar();      // Llamada A
+    vehiculo.viajar(100);   // Llamada B
+}
+```
+
+---
+
+### Análisis:
+
+* **Llamada A (`vehiculo.viajar();`)**
+
+  * El **tipo de referencia** es `Transporte`, pero en **tiempo de ejecución** se usa el objeto real (`new Auto()`).
+  * Como `Auto` **sobrescribe** `viajar()`, se ejecuta el de `Auto`.
+    ✅ Salida: **"Auto detenido."**
+
+---
+
+* **Llamada B (`vehiculo.viajar(100);`)**
+
+  * El compilador mira el **tipo de referencia** (`Transporte`).
+  * En `Transporte` **NO existe** un método `viajar(int)`.
+    ❌ Error de compilación (aunque la clase `Auto` sí lo tenga, no importa porque la variable está declarada como `Transporte`).
+
+---
+
+### Opciones:
+
+1. ❌ Incorrecta, porque en Llamada A no se imprime `"Transporte en movimiento."`.
+2. ✅ Correcta → Llamada A imprime `"Auto detenido."`, y Llamada B falla en compilación.
+3. ❌ Incorrecta, porque omite el error de la Llamada B.
+4. ❌ Incorrecta, porque el método `viajar(int)` no es un error de sobrescritura, es una **sobrecarga válida**.
+
+---
+
+### ✅ Respuesta correcta: **Opción 2**
+
+---

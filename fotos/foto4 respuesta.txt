@@ -1,0 +1,51 @@
+### 🔑 Recordemos:
+
+* **Encapsulamiento**: los atributos se marcan `private` y se acceden solo a través de **métodos públicos** (`get`/`set`), lo que protege los datos sensibles y permite control en su acceso.
+* Violación = exponer directamente atributos internos sin mediación.
+* Compromiso de datos sensibles = cuando se permite modificación sin control.
+
+---
+
+### Opciones:
+
+1. **Declarar un atributo clave de la ClaseC (ej. private String id;) y proporcionar solo el método public String getId() (getter), sin implementar el public void setId(String id) (setter).**
+
+   * Aquí el atributo sigue siendo `private`.
+   * Solo se da lectura, no modificación.
+     ✅ Esto **respeta el encapsulamiento**, incluso aumenta seguridad (atributo inmutable).
+
+---
+
+2. **Declarar el atributo size de la ClaseC como public int size; permitiendo que otras clases lo accedan y modifiquen directamente sin pasar por métodos.**
+
+   * Esto es **exactamente lo que rompe el encapsulamiento**, porque se expone directamente el atributo y cualquier clase puede leer/modificarlo sin control.
+     ❌ **Viola directamente el principio de encapsulamiento.**
+
+---
+
+3. **Implementar el método public void setSize(int newSize) de la ClaseC, pero incluir dentro de él una lógica de validación que lanza una excepción si newSize es menor que cero.**
+
+   * Aquí se protege el acceso mediante un **setter controlado**, que valida antes de asignar.
+     ✅ Esto **respeta y fortalece el encapsulamiento** (control de integridad de datos).
+
+---
+
+4. **Crear una interfaz IComponente que defina los métodos getSize() y setSize(int) y hacer que la ClaseC implemente esta interfaz.**
+
+   * Esto sigue usando métodos públicos, mantiene el atributo `private`.
+   * Solo añade un contrato claro para acceso.
+     ✅ **No rompe encapsulamiento**, lo mantiene.
+
+---
+
+### 📌 Conclusión:
+
+La decisión de diseño que **viola el principio de encapsulamiento** es:
+
+👉 **Opción 2: Declarar el atributo size como public int size;**
+
+Todas las demás (1, 3, 4) **respetan el encapsulamiento** y no comprometen los datos sensibles.
+
+---
+
+

@@ -1,0 +1,68 @@
+### 📌 Código relevante:
+
+```java
+class Dog extends Animal {
+    @Override
+    public void makeNoise() {
+        System.out.println("bark");
+    }
+
+    public void playDead() {
+        System.out.println("roll over");
+    }
+}
+
+public class CastTest2 {
+    public static void main(String[] args) {
+        Animal[] a = {new Animal(), new Dog(), new Animal()};
+
+        for(Animal animal : a) {
+            animal.makeNoise();
+
+            if(animal instanceof Dog) {
+                animal.playDead(); // ¡ERROR!
+            }
+        }
+    }
+}
+```
+
+---
+
+### 🔍 Análisis:
+
+* La **referencia** `animal` es de tipo **`Animal`**.
+* La clase `Animal` **no tiene el método `playDead()`**.
+* Aunque en tiempo de ejecución algunos objetos sean efectivamente `Dog`, **el compilador solo mira el tipo de la referencia** (estático), no el objeto real.
+* Por eso, en compilación:
+
+  ```java
+  animal.playDead();
+  ```
+
+  es inválido → **`Animal` no conoce `playDead()`**.
+
+---
+
+### ✅ Forma correcta:
+
+Para que compile y funcione, hay que **hacer un cast** dentro del `instanceof`:
+
+```java
+if(animal instanceof Dog) {
+    ((Dog) animal).playDead();
+}
+```
+
+---
+
+### 📌 Respuesta correcta en las opciones:
+
+👉 **El error ocurre porque la referencia animal es de tipo Animal, y la clase Animal no tiene un método llamado playDead().**
+
+---
+
+### 🚀 Resumen:
+
+* El error **NO es por `instanceof`**, ni por polimorfismo, ni porque `Animal` no sea abstracta.
+* El error es puramente **de tipo estático**: el compilador verifica qué métodos conoce `Animal`.

@@ -1,0 +1,117 @@
+### 1. **Constante en la interfaz**
+
+En `IBase` se define:
+
+```java
+int VALOR_BASE = 10;  // implícitamente public static final
+```
+
+Esto es válido y accesible desde cualquier clase que implemente la interfaz.
+
+---
+
+### 2. **Métodos `default` en interfaces**
+
+En `IBase`:
+
+```java
+default String obtenerInfo() {
+    return "Info desde IBase: " + VALOR_BASE;
+}
+```
+
+En `IDetalle`:
+
+```java
+default String obtenerInfo() {
+    return "Info desde IDetalle: " + IBase.VALOR_BASE;
+}
+```
+
+Ambos interfaces definen un método **default con la misma firma**: `obtenerInfo()`.
+Esto genera un **conflicto de herencia** en la clase que implemente ambas interfaces.
+
+---
+
+### 3. **Clase concreta `ClaseAvanzada`**
+
+```java
+class ClaseAvanzada implements IBase, IDetalle {
+    @Override
+    public String getID() {
+        return "AVZ-001";
+    }
+}
+```
+
+⚠️ **Problema**: La clase implementa **dos interfaces** que definen un mismo método `default` (`obtenerInfo()`), **pero no lo sobrescribe**.
+En Java, esto provoca un **error de compilación** porque el compilador no sabe cuál versión usar.
+
+---
+
+### 4. **Clase `TestInterfaces`**
+
+```java
+public class TestInterfaces {
+    public static void main(String[] args) {
+        ClaseAvanzada obj = new ClaseAvanzada();
+        System.out.println(obj.obtenerInfo());
+    }
+}
+```
+
+Al llegar aquí, el programa ni siquiera compilará, porque `ClaseAvanzada` debe **resolver explícitamente** el conflicto de `obtenerInfo()`.
+
+---
+
+### ✅ Conclusión
+
+El código **NO compila**.
+El error surge porque **`ClaseAvanzada` no implementa (sobrescribe) el método `obtenerInfo()`**, el cual está en conflicto entre `IBase` y `IDetalle`.
+
+---
+
+### 🔧 Corrección posible
+
+Si quisiéramos que compile, la clase debería sobrescribir el método `obtenerInfo()` y decidir a cuál versión llamar, por ejemplo:
+
+```java
+@Override
+public String obtenerInfo() {
+    return IDetalle.super.obtenerInfo(); // o IBase.super.obtenerInfo()
+}
+```
+
+De esta forma ya compila y la salida sería:
+
+```
+Info desde IDetalle: 10
+```
+
+(si usamos `IDetalle.super`).
+
+---
+
+👉 Entonces, para la pregunta original:
+**El resultado correcto es que el código produce un ERROR DE COMPILACIÓN y no llega a ejecutar la llamada clave.**
+
+---
+
+
+
+
+1. Las declaraciones 1, 2 y 3 compilan correctamente. La Declaración 4 (interface L implements A {}) compila porque una interfaz, al definir un contrato, puede implementar una clase concreta para garantizar que el comportamiento de la clase sea consistente con el protocolo.
+2. Las declaraciones 1, 2 y 3 compilan correctamente. La Declaración 4 no compila porque, sintácticamente, una interface solo puede usar la palabra clave extends para heredar de otras interfaces, y no puede usar implements. 
+3. Las declaraciones 1, 2 y 3 compilan correctamente. La Declaración 4 no compila porque, conceptualmente, el propósito de una interfaz es capturar similitudes entre clases no relacionadas (como se indica en el material de estudio), y por lo tanto, no puede referenciar ninguna clase concreta. 
+4. Las declaraciones 1, 2 y 4 compilan correctamente. La Declaración 3 (class C implements I, J {}) no compila porque una clase solo puede implementar una única interfaz en Java.
+
+
+Opciones:
+
+❌ Dice que una interfaz puede "implementar" una clase concreta → eso es falso en Java.
+
+✅ Correcto → Una interface solo puede heredar de otras interfaces con extends, no con implements.
+
+🔸 Parcial → Habla de lo conceptual, pero la razón real es sintáctica (lo de extends vs implements).
+
+❌ Falso → Una clase en Java puede implementar múltiples interfaces, no solo una.
