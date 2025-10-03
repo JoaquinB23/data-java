@@ -1,0 +1,103 @@
+📘 Resumen: Constructor en Java
+🔹 ¿Qué es un constructor?
+
+Es un método especial de una clase que se ejecuta automáticamente cuando se crea una instancia con new.
+
+Sirve para inicializar atributos de un objeto.
+
+Tiene el mismo nombre que la clase y no tiene tipo de retorno (ni siquiera void).
+
+🔹 Características
+
+Se llama automáticamente al hacer new.
+
+Puede estar sobrecargado (varios constructores con distintos parámetros).
+
+Si no se define, Java agrega un constructor por defecto vacío.
+
+Se puede usar this dentro del constructor para diferenciar atributos de parámetros.
+
+
+🔹 Ejemplo básico
+
+class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor
+    Persona(String nombre, int edad) {
+        this.nombre = nombre; // this diferencia el atributo del parámetro
+        this.edad = edad;
+    }
+
+    void presentarse() {
+        System.out.println("Hola, soy " + nombre + " y tengo " + edad + " años.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Ana", 20); // llama al constructor
+        Persona p2 = new Persona("Luis", 25);
+
+        p1.presentarse(); // Hola, soy Ana y tengo 20 años.
+        p2.presentarse(); // Hola, soy Luis y tengo 25 años.
+    }
+}
+
+
+
+🔹 Sobrecarga de constructores
+Se pueden crear varios constructores con distinta lista de parámetros:
+
+EJEMPLO: 
+
+class Libro {
+    String titulo;
+    String autor;
+
+    // Constructor 1
+    Libro(String titulo) {
+        this.titulo = titulo;
+        this.autor = "Desconocido";
+    }
+
+    // Constructor 2
+    Libro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    void mostrar() {
+        System.out.println(titulo + " - " + autor);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Libro l1 = new Libro("1984");
+        Libro l2 = new Libro("Cien años de soledad", "Gabriel García Márquez");
+
+        l1.mostrar(); // 1984 - Desconocido
+        l2.mostrar(); // Cien años de soledad - Gabriel García Márquez
+    }
+}
+
+
+🔹 Beneficios
+
+✅ Inicializan atributos al crear objetos.
+✅ Mejoran la legibilidad y el control en la creación de instancias.
+✅ Se pueden sobrecargar para flexibilidad.
+
+✅ Resumen 
+
+Un constructor en Java es un método especial que se ejecuta automáticamente al crear un objeto con new.
+
+Tiene el mismo nombre que la clase.
+
+No tiene tipo de retorno.
+
+Puede estar sobrecargado.
+
+Sirve para inicializar atributos.

@@ -1,0 +1,110 @@
+📘 Resumen: Métodos en Java
+🔹 ¿Qué es un método?
+
+Un método es un bloque de código reutilizable que realiza una tarea.
+
+Se define dentro de una clase y puede ser invocado por sus objetos (instancias).
+
+Permite dividir el código en partes más pequeñas, organizadas y reutilizables.
+
+
+
+🔹 Sintaxis de un método
+modificadorDeAcceso tipoDeRetorno nombreMetodo(parámetros) {
+    // cuerpo del método
+    return valor; // (si no es void)
+}
+
+Ejemplo:
+
+class Calculadora {
+    // Método que retorna un valor
+    int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Método sin retorno (void)
+    void saludar() {
+        System.out.println("Hola desde la calculadora!");
+    }
+}
+
+
+
+🔹 Tipos de métodos
+
+Según retorno:
+
+Con retorno → devuelven un valor (int, double, String, etc.).
+
+Sin retorno (void) → solo ejecutan código.
+
+Según si usan parámetros:
+
+Con parámetros → reciben datos externos.
+
+Sin parámetros → ejecutan sin necesidad de datos de entrada.
+
+Especiales en Java:
+
+Constructores → se ejecutan al crear una instancia (new).
+
+Métodos static → pertenecen a la clase y no a una instancia.
+
+Métodos final → no pueden ser sobreescritos.
+
+Métodos abstractos → se declaran en clases abstractas o interfaces, pero no tienen cuerpo.
+
+
+
+🔹 Ejemplo completo
+class Persona {
+    String nombre;
+
+    // Constructor
+    Persona(String n) {
+        nombre = n;
+    }
+
+    // Método con retorno
+    String getNombre() {
+        return nombre;
+    }
+
+    // Método sin retorno
+    void saludar() {
+        System.out.println("Hola, soy " + nombre);
+    }
+
+    // Método estático
+    static void info() {
+        System.out.println("Esta es la clase Persona");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p = new Persona("Ana");
+        p.saludar();                  // Hola, soy Ana
+        System.out.println(p.getNombre()); // Ana
+        Persona.info();               // método estático
+    }
+}
+
+
+
+🔹 Beneficios
+
+✅ Permiten reutilización de código.
+✅ Mejoran la organización y legibilidad.
+✅ Facilitan la modularidad y el mantenimiento.
+
+✅ Resumen 
+
+Un método es un bloque de código en una clase que puede ejecutarse al ser invocado.
+
+Puede tener parámetros y retornar un valor.
+
+Puede ser static, final, o abstract.
+
+Los métodos permiten reutilización y modularidad en la programación.

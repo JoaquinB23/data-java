@@ -1,0 +1,66 @@
+📘 Resumen: Instancia en Java
+🔹 ¿Qué es una instancia?
+
+Una instancia es un objeto creado a partir de una clase.
+
+Mientras la clase es un molde o plano, la instancia es un ejemplar concreto de esa clase que ocupa memoria y tiene valores propios en sus atributos.
+
+
+🔹 Ejemplo básico
+class Persona {
+    String nombre;
+    int edad;
+
+    void saludar() {
+        System.out.println("Hola, soy " + nombre + " y tengo " + edad + " años.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear instancias de la clase Persona
+        Persona p1 = new Persona();
+        Persona p2 = new Persona();
+
+        // Asignar valores a cada instancia
+        p1.nombre = "Ana";
+        p1.edad = 20;
+
+        p2.nombre = "Luis";
+        p2.edad = 25;
+
+        // Cada objeto se comporta de manera independiente
+        p1.saludar(); // Hola, soy Ana y tengo 20 años.
+        p2.saludar(); // Hola, soy Luis y tengo 25 años.
+    }
+}
+
+
+🔹 Diferencia entre clase e instancia
+
+Clase: definición, molde o plantilla (no ocupa memoria por atributos hasta que se instancia).
+
+Instancia: objeto real creado en memoria a partir de la clase.
+
+
+
+🔹 Creación de instancias
+
+Se hace con el operador new:
+Clase obj = new Clase();
+
+
+Cada instancia tiene su propio espacio de memoria para atributos, pero comparten los métodos definidos en la clase.
+
+
+🔹 Beneficios
+
+✅ Permite crear múltiples objetos a partir de un mismo modelo.
+✅ Cada instancia mantiene sus propios datos.
+✅ Favorece la reutilización y la modularidad en POO.
+
+
+✅ Resumen 
+
+Una instancia es un objeto creado a partir de una clase usando new.
+Cada instancia tiene sus propios valores de atributos y puede invocar los métodos definidos en la clase.

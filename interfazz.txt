@@ -1,0 +1,109 @@
+📘 Resumen: Interfaces en Java
+🔹 ¿Qué es una interfaz?
+
+Una interfaz en Java es un contrato que define métodos abstractos (sin implementación) y constantes.
+
+Las clases que la implementan están obligadas a definir esos métodos.
+
+Sirve para lograr abstracción total y polimorfismo.
+
+🔹 Sintaxis básica
+// Definición de interfaz
+interface Animal {
+    void hacerSonido();   // método abstracto (implícitamente public y abstract)
+}
+
+// Implementación en clase
+class Perro implements Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("Guau guau");
+    }
+}
+
+class Gato implements Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("Miau miau");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Perro();  // polimorfismo
+        Animal a2 = new Gato();
+
+        a1.hacerSonido();  // Guau guau
+        a2.hacerSonido();  // Miau miau
+    }
+}
+
+
+
+🔹 Características principales
+
+Una interfaz puede tener:
+
+Métodos abstractos (sin cuerpo).
+
+Métodos default (con implementación por defecto).
+
+Métodos estáticos (accesibles desde la interfaz).
+
+Constantes (public static final por defecto).
+
+Una clase puede implementar múltiples interfaces (solución a la herencia múltiple).
+
+Desde Java 8 → se permiten métodos default y static.
+
+Desde Java 9 → se permiten métodos privados en interfaces.
+
+
+
+
+🔹 Ejemplo con default y static
+interface Vehiculo {
+    void arrancar();
+
+    default void frenar() {
+        System.out.println("El vehículo se detiene.");
+    }
+
+    static void info() {
+        System.out.println("Interfaz Vehiculo");
+    }
+}
+
+class Auto implements Vehiculo {
+    @Override
+    public void arrancar() {
+        System.out.println("El auto arranca.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Auto a = new Auto();
+        a.arrancar();
+        a.frenar();      // método default
+        Vehiculo.info(); // método static
+    }
+}
+
+
+
+🔹 Beneficios
+
+✅ Permiten abstracción total.
+✅ Hacen posible la herencia múltiple de comportamiento.
+✅ Favorecen el polimorfismo y la reutilización.
+
+✅ Resumen corto
+
+Una interfaz en Java define un conjunto de métodos abstractos y constantes que una clase debe implementar.
+
+Se usa con implements.
+
+Permite polimorfismo y herencia múltiple.
+
+Desde Java 8 soporta métodos default y static.

@@ -1,0 +1,67 @@
+📘 Resumen: Herencia en Java
+🔹 ¿Qué es la herencia?
+
+La herencia es un mecanismo de la POO que permite que una clase (subclase o hija) reutilice atributos y métodos de otra clase (superclase o padre).
+
+Facilita la reutilización de código, la organización y el polimorfismo.
+
+
+🔹 Sintaxis básica
+class Superclase {
+    String nombre;
+
+    void saludar() {
+        System.out.println("Hola, soy la superclase");
+    }
+}
+
+// Subclase hereda de Superclase
+class Subclase extends Superclase {
+    void presentarse() {
+        System.out.println("Soy una subclase, y mi nombre es " + nombre);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subclase obj = new Subclase();
+        obj.nombre = "Ana";      // atributo heredado
+        obj.saludar();           // método heredado
+        obj.presentarse();       // método propio
+    }
+}
+
+
+👉 Salida:
+
+Hola, soy la superclase
+Soy una subclase, y mi nombre es Ana
+
+
+
+🔹 Palabras clave importantes
+
+extends → indica que una clase hereda de otra.
+
+super → permite acceder a métodos/atributos de la superclase o invocar su constructor.
+
+Herencia simple en Java: una clase solo puede heredar de una única superclase (Java no admite herencia múltiple de clases, pero sí de interfaces).
+
+
+🔹 Tipos de herencia
+
+Simple → una clase hereda de otra.
+
+Jerárquica → varias clases heredan de una misma clase padre.
+
+Múltiple (solo mediante interfaces).
+
+🔹 Beneficios
+
+✅ Reutilización de código.
+✅ Permite el polimorfismo dinámico (una referencia padre puede apuntar a un objeto hijo).
+✅ Facilita la extensibilidad y mantenibilidad del código.
+
+✅ Resumen 
+
+La herencia en Java permite que una clase (subclase) herede atributos y métodos de otra (superclase) usando la palabra clave extends. Solo se admite herencia simple, pero una clase puede implementar múltiples interfaces.

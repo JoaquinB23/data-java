@@ -1,0 +1,90 @@
+📘 Resumen: Polimorfismo en Java
+🔹 ¿Qué es el polimorfismo?
+
+Significa “muchas formas”.
+
+Es la capacidad de un objeto de comportarse de distintas maneras dependiendo del contexto.
+
+En Java, se da cuando una misma referencia puede representar diferentes comportamientos.
+
+🔹 Tipos de polimorfismo
+
+Polimorfismo en tiempo de compilación (estático)
+
+Se logra mediante la sobrecarga de métodos (overloading).
+
+El compilador decide qué método usar según los parámetros.
+
+EJEMPLO:
+
+class Calculadora {
+    int sumar(int a, int b) {
+        return a + b;
+    }
+    double sumar(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculadora c = new Calculadora();
+        System.out.println(c.sumar(2, 3));       // usa int
+        System.out.println(c.sumar(2.5, 3.5));   // usa double
+    }
+}
+
+
+
+Polimorfismo en tiempo de ejecución (dinámico)
+
+Se logra mediante la sobreescritura de métodos (overriding).
+
+La decisión de qué método ejecutar depende del objeto real, no de la referencia.
+
+Ejemplo:
+
+class Animal {
+    void sonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    void sonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+class Gato extends Animal {
+    @Override
+    void sonido() {
+        System.out.println("El gato maúlla");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Perro(); // referencia Animal, objeto Perro
+        Animal a2 = new Gato();  // referencia Animal, objeto Gato
+
+        a1.sonido();  // "El perro ladra"
+        a2.sonido();  // "El gato maúlla"
+    }
+}
+
+
+🔹 Beneficios
+
+✅ Permite código más flexible y extensible.
+✅ Facilita la reutilización y el uso de interfaces.
+✅ Se combina con la herencia y la abstracción.
+
+✅ Resumen corto
+
+El polimorfismo en Java es la capacidad de un objeto de adoptar distintas formas. Puede ser:
+
+Estático (sobrecarga) → decisión en compilación.
+
+Dinámico (sobreescritura) → decisión en ejecución, según el objeto real.
