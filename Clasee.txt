@@ -1,0 +1,81 @@
+🔹 Clase en Java
+
+Una clase es un molde o plantilla que define:
+
+Atributos (campos/variables de instancia): representan las características de un objeto.
+
+Métodos: definen el comportamiento (qué puede hacer).
+
+Constructores: permiten inicializar objetos.
+
+Modificadores de acceso: controlan la visibilidad (public, private, protected, default).
+
+📌 Ejemplo:
+public class Auto {
+    // Atributos
+    private String color;
+    private int velocidad;
+
+    // Constructor
+    public Auto(String color) {
+        this.color = color;
+        this.velocidad = 0;
+    }
+
+    // Métodos
+    public void acelerar() {
+        velocidad += 10;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+}
+
+
+🔹 Principios de la Programación Orientada a Objetos (POO)
+
+Encapsulamiento
+
+Ocultar los datos internos y exponer solo lo necesario mediante métodos públicos.
+
+Ejemplo: atributos private con getters/setters.
+
+Abstracción
+
+Enfocarse en lo esencial, ignorando detalles internos.
+
+Se logra con clases abstractas e interfaces.
+
+Herencia
+
+Permite que una clase “hija” reutilice atributos y métodos de otra “padre”.
+
+Ejemplo:
+class Vehiculo { void mover() { System.out.println("Me muevo"); } }
+class Auto extends Vehiculo { }
+
+
+Polimorfismo
+
+Una misma referencia puede comportarse de diferentes maneras según el objeto que apunte.
+
+Ejemplo:
+Vehiculo v = new Auto();  // Polimorfismo
+v.mover();  // Ejecuta la versión de Auto si está sobreescrita
+
+
+🔹 Otros conceptos clave
+
+this → referencia al objeto actual.
+
+super → referencia a la superclase inmediata (sirve para llamar a constructores o métodos del padre).
+
+Sobrecarga (overloading) → mismo nombre de método pero distinta lista de parámetros.
+
+Sobrescritura (overriding) → redefinir un método heredado con la misma firma.
+
+Interfaces → definen comportamientos que una clase debe implementar (solo métodos y constantes, con default opcionales).
+
+Clases abstractas → no se pueden instanciar, sirven como plantilla para otras clases.
+

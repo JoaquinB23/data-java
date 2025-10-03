@@ -1,0 +1,73 @@
+🔹 ¿Qué es la abstracción?
+
+Es el principio de ocultar los detalles internos de un objeto y mostrar solo lo esencial.
+
+Se enfoca en el qué hace un objeto, no en cómo lo hace.
+
+Permite trabajar con conceptos generales sin preocuparse por la implementación concreta.
+
+🔹 Formas de aplicar abstracción en Java
+
+Clases abstractas
+
+Usan la palabra clave abstract.
+
+Pueden tener métodos abstractos (sin cuerpo) y métodos normales.
+
+No se pueden instanciar.
+
+EJEMPLO:
+abstract class Figura {
+    abstract double calcularArea(); // método abstracto
+}
+
+
+Interfaces
+
+Definen un contrato de métodos que una clase debe implementar.
+
+Una clase puede implementar varias interfaces.
+EJEMPLO: 
+interface Dibujable {
+    void dibujar();
+}
+
+
+🔹EJEMPLO PRACTICO:
+abstract class Vehiculo {
+    abstract void mover(); // cada vehículo se moverá distinto
+}
+
+class Auto extends Vehiculo {
+    @Override
+    void mover() {
+        System.out.println("El auto se mueve por carretera");
+    }
+}
+
+class Avion extends Vehiculo {
+    @Override
+    void mover() {
+        System.out.println("El avión vuela en el aire");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehiculo v1 = new Auto();
+        Vehiculo v2 = new Avion();
+        v1.mover(); // "El auto se mueve por carretera"
+        v2.mover(); // "El avión vuela en el aire"
+    }
+}
+
+
+
+🔹 Beneficios de la abstracción
+
+Reduce la complejidad del sistema.
+
+Facilita la reutilización y el mantenimiento.
+
+Permite programar “a un nivel alto” sin depender de implementaciones concretas.
+

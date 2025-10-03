@@ -1,0 +1,62 @@
+🔹 ¿Qué es una clase abstracta?
+
+Es una clase que no se puede instanciar directamente (no se pueden crear objetos de ella).
+
+Se usa como plantilla para que otras clases la hereden.
+
+Puede contener:
+
+Métodos abstractos (sin implementación, obligan a las subclases a definirlos).
+
+Métodos normales (con código).
+
+Atributos y constructores (sí, también puede tener).
+
+SINTAXIS BASICA:
+abstract class Figura {
+    // Atributo
+    String color;
+
+    // Método abstracto (sin cuerpo)
+    abstract double calcularArea();
+
+    // Método normal
+    void mostrarColor() {
+        System.out.println("Color: " + color);
+    }
+}
+
+
+
+
+USO EN SUBCLASES: 
+class Circulo extends Figura {
+    double radio;
+
+    Circulo(String color, double radio) {
+        this.color = color;
+        this.radio = radio;
+    }
+
+    // Implementación obligatoria del método abstracto
+    @Override
+    double calcularArea() {
+        return Math.PI * radio * radio;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Figura f = new Circulo("Rojo", 5);
+        f.mostrarColor();  // Método heredado
+        System.out.println("Área: " + f.calcularArea());
+    }
+}
+
+
+🔹 Diferencias con una interfaz
+Clase Abstracta	Interfaz
+Puede tener atributos	Solo constantes (public static final)
+Puede tener métodos abstractos y normales	Métodos abstractos o default
+Herencia simple (una sola clase padre)	Una clase puede implementar múltiples interfaces
+Ideal para compartir código común	Ideal para definir contratos de comportamiento
