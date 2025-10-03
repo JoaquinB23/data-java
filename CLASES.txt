@@ -1,0 +1,27 @@
+CLASES 
+
+¿Qué es una clase en Java?
+
+Una clase en Java es una plantilla o molde que se utiliza para crear objetos. Define atributos (datos/variables) y métodos (acciones/comportamientos) que esos objetos tendrán.
+
+
+🔹 Principios OOP relacionados con clases
+
+Encapsulamiento → ocultar datos con private y exponerlos con getters/setters.
+
+Herencia → una clase puede heredar de otra (extends).
+
+Polimorfismo → un método puede tener distintas implementaciones.
+
+Abstracción → enfocarse en lo esencial, usando abstract o interface.
+
+
+🔹 Tipos de miembros de clase
+
+Variables de instancia → ligadas a cada objeto.
+
+Métodos de instancia → actúan sobre los datos del objeto.
+
+Variables estáticas (static) → compartidas entre todos los objetos de la clase.
+
+Métodos estáticos (static) → se pueden usar sin crear objetos.
